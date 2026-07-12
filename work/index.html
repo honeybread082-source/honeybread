@@ -78,7 +78,7 @@ footer{text-align:center;color:var(--text-s);font-size:12px;line-height:1.8;padd
 .modal .mr button{flex:1;padding:12px;border:0;border-radius:12px;cursor:pointer;font-family:'Jua';font-size:15px}
 .modal .mr .ok{background:var(--pink-d);color:#fff}
 .modal .mr .no{background:var(--cream);color:var(--gold)}
-@media(max-width:1100px){.grid{grid-template-columns:1fr}.side{position:static}}
+}
 
 .search{width:100%;padding:13px 20px;border-radius:999px;border:2px solid var(--line);font-size:14px;outline:none;
  background:var(--card2);color:var(--text);margin-bottom:18px;font-family:inherit}
@@ -113,7 +113,36 @@ footer{text-align:center;color:var(--text-s);font-size:12px;line-height:1.8;padd
  border-radius:999px;border:1.5px solid var(--line-p)}
 .urow .ct{font-size:14px;font-weight:700;color:var(--gold);background:var(--card);border:2px solid var(--line);
  border-radius:999px;padding:2px 13px;min-width:42px;text-align:center}
-@media(max-width:1100px){.vgrid{grid-template-columns:repeat(2,1fr)}}
+
+
+/* 좁은 폭(SOOP iframe 등)에서도 사이드바 유지 */
+@media(max-width:1180px){
+ .grid{grid-template-columns:176px 1fr;gap:14px}
+ .side{padding:16px 10px 18px;border-radius:24px;gap:8px}
+ .s-av{width:88px;height:88px;padding:4px}
+ .s-logo b{font-size:20px}
+ .s-logo span{font-size:12px}
+ .sm{padding:9px 12px;font-size:13.5px;gap:7px}
+ .sm svg{width:16px;height:16px}
+ .s-cat svg{width:30px;height:30px}
+ .tag{font-size:11.5px;padding:5px 10px}
+ .ask{padding:7px 14px;font-size:13px}
+ .card{padding:18px 20px}
+ .stk{transform:scale(.8)}
+}
+@media(max-width:820px){
+ .grid{grid-template-columns:1fr}
+ .side{position:static;flex-direction:row}
+}
+
+@media(max-width:820px){
+ .week,.cal{grid-template-columns:repeat(4,1fr)}
+ .wh{display:none}
+ .vgrid{grid-template-columns:repeat(2,1fr)}
+ .pgrid{grid-template-columns:repeat(2,1fr)}
+ .agrid{grid-template-columns:repeat(3,1fr)}
+ .rows,.cols{grid-template-columns:1fr}
+}
 </style></head><body data-page="work">
 <script>if(localStorage.getItem('theme')==='dark')document.body.classList.add('dark');</script>
 <svg width="0" height="0" style="position:absolute"><defs>
@@ -240,4 +269,5 @@ function filt(){
 <script src="../supabase.js"></script>
 <script src="../app.js"></script>
 <script src="../fx.js"></script>
+<script src="../transition.js"></script>
 </body></html>
