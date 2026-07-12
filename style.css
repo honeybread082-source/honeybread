@@ -355,3 +355,6 @@ footer {
   a.nav-logo { font-size: 21px !important; padding: 10px 4px; }
   .nav a { padding: 12px 6px; font-size: 12px; }
 }
+
+/* 말랑이체는 굵기 1종 — 가짜 볼드 방지 */
+*,*::before,*::after{font-weight:400 !important}

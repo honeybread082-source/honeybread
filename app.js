@@ -80,7 +80,7 @@ async function loadProfile() {
       var half = Math.ceil(groups.length / 2);
       var col = function (arr) {
         return '<div class="rcol">' + arr.map(function (g) {
-          return '<div class="rgrp"><b class="rh">❧ ' + esc(g.t) + '</b><ul>' +
+          return '<div class="rgrp"><b class="rh"><svg class="ic pawi" width="13" height="13"><use href="#i-paw"/></svg> ' + esc(g.t) + '</b><ul>' +
             (g.items || []).map(function (d) { return '<li>' + esc(d) + '</li>'; }).join('') + '</ul></div>';
         }).join('') + '</div>';
       };
@@ -90,7 +90,10 @@ async function loadProfile() {
   var rw = $('[data-rules-warn]');
   if (rw && PROFILE['rules-warn']) rw.innerHTML = esc(PROFILE['rules-warn']).replace(/\n/g, '<br>');
   var rf = $('[data-rules-foot]');
-  if (rf && PROFILE['rules-foot']) rf.textContent = PROFILE['rules-foot'];
+  if (rf && PROFILE['rules-foot']) {
+    var pw = '<svg class="ic" width="13" height="13"><use href="#i-paw"/></svg>';
+    rf.innerHTML = pw + ' ' + esc(PROFILE['rules-foot']) + ' ' + pw;
+  }
 
   ready();
 }
