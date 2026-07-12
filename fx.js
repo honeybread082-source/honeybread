@@ -16,8 +16,8 @@
    ============================================================ */
 
 /* ─────────── 설정 (이 사람에 맞게 바꾸세요) ─────────── */
-var FX_FLOAT = ['○','✧','○','✦','○','✧','○','✦','○'];   // 떠다니는 입자 모양
-var FX_CLICK = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMCIgaGVpZ2h0PSIyOCIgdmlld0JveD0iMCAwIDMwIDI4Ij48cGF0aCBkPSJNMTUgMiBDOCAyIDMgOCAzIDE1IHEwIDYgMTIgMTEgcTEyIC01IDEyIC0xMSBDMjcgOCAyMiAyIDE1IDIgeiIgZmlsbD0iI0E5RDhGNCIgc3Ryb2tlPSIjM0U5QkQ0IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48cGF0aCBkPSJNMTUgMyBMMTUgMjUgTTkgNC41IEwxMiAyNCBNMjEgNC41IEwxOCAyNCIgc3Ryb2tlPSIjM0U5QkQ0IiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9zdmc+';                           // 클릭/프사톡 모양. 글자·이모지 또는 이미지(data:… / https://… .svg·.png)도 가능
+var FX_FLOAT = ['♡','✦','♡','🍓','♡','✧','♡','🐾','♡'];   // 떠다니는 입자 모양
+var FX_CLICK = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDY0IDY0Ij48cGF0aCBkPSJNMzIgNTdjLTEyIDAtMjAtMTAtMjAtMjEgMC04IDktMTMgMjAtMTNzMjAgNSAyMCAxM2MwIDExLTggMjEtMjAgMjF6IiBmaWxsPSIjRjU3OThGIiBzdHJva2U9IiNGRkY3RUYiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxwYXRoIGQ9Ik0zMiAyM2MtMy03LTEwLTktMTUtOCAyIDYgOCA5IDE1IDh6TTMyIDIzYzMtNyAxMC05IDE1LTgtMiA2LTggOS0xNSA4eiIgZmlsbD0iIzhGQzk3QSIgc3Ryb2tlPSIjRkZGN0VGIiBzdHJva2Utd2lkdGg9IjIuNiIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxjaXJjbGUgY3g9IjI1IiBjeT0iMzYiIHI9IjEuOCIgZmlsbD0iI0ZGRjdFRiIvPjxjaXJjbGUgY3g9IjM5IiBjeT0iMzgiIHI9IjEuOCIgZmlsbD0iI0ZGRjdFRiIvPjxjaXJjbGUgY3g9IjMyIiBjeT0iNDciIHI9IjEuOCIgZmlsbD0iI0ZGRjdFRiIvPjwvc3ZnPg==';   // 클릭/프사톡 = 딸기
 var FX_COUNT = 14;                            // 떠다니는 입자 개수 (많을수록 무거움)
 var FX_TILT  = true;                          // 카드 마우스오버 살짝 기울기 (끄려면 false)
 
@@ -175,7 +175,7 @@ var FX_TRANS_MS    = 800;    // 커지는 등장 길이(ms). 더 느리게 = 숫
       });
     }
     /* 프사 톡(이스터에그): 프사를 클릭하면 모양이 펑 */
-    var av = document.querySelector('.avatar-wrap, #avatarWrap, .avatar');
+    var av = document.querySelector('.avatar-wrap, #avatarWrap, .avatar, .s-av');
     if (av && !av.dataset.fxPop) {
       av.dataset.fxPop = '1'; av.style.cursor = 'pointer';
       av.addEventListener('click', function (e) { window.fxHearts(e.clientX, e.clientY, 10); });
@@ -216,7 +216,7 @@ var FX_TRANS_MS    = 800;    // 커지는 등장 길이(ms). 더 느리게 = 숫
 
   /* 아무 데나 클릭하면 모양 톡 (입력창·버튼·링크·프사 위에선 생략) */
   document.addEventListener('click', function (e) {
-    if (e.target.closest('input, textarea, button, a, .iq-modal, .iq-ov, .avatar-wrap, #avatarWrap, .avatar')) return;
+    if (e.target.closest('input, textarea, button, a, .iq-modal, .iq-ov, .avatar-wrap, #avatarWrap, .avatar, .s-av')) return;
     window.fxHearts(e.clientX, e.clientY, 4);
   });
 

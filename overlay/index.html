@@ -41,18 +41,18 @@ html, body { background: transparent; overflow: hidden; width: 700px; height: 12
 <div class="bar" id="bar">
   <div class="profile-wrap">
     <div class="profile-bg">
-      <img src="https://profile.img.sooplive.co.kr/LOGO/{{SOOP아이디앞2글자}}/{{SOOP아이디}}/{{SOOP아이디}}.jpg" alt="" onerror="this.style.display='none'">
+      <img src="https://profile.img.sooplive.co.kr/LOGO/20/2059865/2059865.jpg" alt="" onerror="this.style.display='none'">
     </div>
   </div>
   <div class="song-info" id="songInfo">
-    <div class="song-title-wrap" id="titleWrap"><span class="song-title-text" id="titleText">🎵 {{이름}}</span></div>
+    <div class="song-title-wrap" id="titleWrap"><span class="song-title-text" id="titleText">🎵 꿀빵지</span></div>
     <div class="song-artist" id="artistText"></div>
   </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const sb = supabase.createClient('https://{{SUPABASE프로젝트ID}}.supabase.co', '{{SUPABASE_ANON_KEY}}');
+const sb = supabase.createClient('https://eokuyykkiebivivxnhzr.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVva3V5eWtraWViaXZpdnhuaHpyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM4NTA3NjIsImV4cCI6MjA5OTQyNjc2Mn0.9jC4SM5sMOt3RRebNYLUQj20gVQrSYC5ePYRuhj1R0o');
 const MAX_WIDTH = 460;
 let lastKey = null;
 

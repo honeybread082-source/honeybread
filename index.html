@@ -5,6 +5,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jua&family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
+@font-face{font-family:'Malang';
+ src:url('GeekbleMalang2.woff2') format('woff2'),url('GeekbleMalang2.woff') format('woff');
+ font-weight:400;font-style:normal;font-display:swap}
+
 :root{
   --bg:#FFF6E4; --page:#FFFBF0;
   --card:#FFFDF7; --card2:#FFF7E6;
@@ -25,7 +29,7 @@ body.dark{
   --sh:0 8px 24px rgba(0,0,0,.35); --sh2:0 4px 14px rgba(0,0,0,.3);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Noto Sans KR',sans-serif;color:var(--text);line-height:1.75;-webkit-font-smoothing:antialiased;
+body{font-family:'Malang','Noto Sans KR',sans-serif;color:var(--text);line-height:1.75;-webkit-font-smoothing:antialiased;
  text-rendering:optimizeLegibility;-moz-osx-font-smoothing:grayscale;
  background-color:var(--bg);
  background-image:
@@ -34,10 +38,11 @@ body{font-family:'Noto Sans KR',sans-serif;color:var(--text);line-height:1.75;-w
  background-attachment:fixed;padding:26px 16px}
 body.dark{background-image:none}
 img{max-width:100%;display:block}a{text-decoration:none;color:inherit}ul{list-style:none}
-h1,h3,h4,.ttl,.en,.s-logo b{font-family:'Jua',sans-serif;font-weight:400;letter-spacing:.3px}
-b,.tag,.ask,.dday,.lab,.sm,.rh,.lnk b,.pf b,.lk b{font-family:'Noto Sans KR',sans-serif;font-weight:700;letter-spacing:-.2px}
+h1,h3,h4,.ttl,.en,.s-logo b{font-family:'Malang','Jua',sans-serif;font-weight:400;letter-spacing:.3px}
+b,.tag,.ask,.dday,.lab,.sm,.rh,.lnk b,.pf b,.lk b{font-family:'Malang','Noto Sans KR',sans-serif;font-weight:700;letter-spacing:-.2px}
 .ic{flex:none;vertical-align:middle}
 .avatar{cursor:pointer}
+.s-av{cursor:pointer}
 .stk{position:absolute;z-index:5;pointer-events:none;filter:drop-shadow(0 4px 8px rgba(224,169,59,.22))}
 
 .grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:212px 1fr;gap:22px;align-items:start}
@@ -53,7 +58,7 @@ body.ready .page,body.ready .side{opacity:1}
 .s-av img{width:100%;height:100%;object-fit:cover;border-radius:50%}
 .s-logo{text-align:center;margin-top:2px}
 .s-logo b{display:block;font-size:26px;color:var(--gold);line-height:1.1}
-.s-logo span{display:inline-flex;align-items:center;gap:4px;font-family:'Jua';font-size:14px;color:var(--pink-d)}
+.s-logo span{display:inline-flex;align-items:center;gap:4px;font-family:'Malang','Jua';font-size:14px;color:var(--pink-d)}
 .s-menu{display:grid;gap:8px;width:100%;margin-top:4px}
 .sm{display:flex;align-items:center;gap:9px;padding:11px 16px;border-radius:999px;background:var(--card2);
  border:2px solid var(--line-p);font-size:15px;color:var(--text);transition:.16s}
@@ -62,7 +67,7 @@ body.ready .page,body.ready .side{opacity:1}
 .s-line{width:86%;border-top:2px dashed var(--line-p);margin:2px 0}
 .s-h{font-size:13px;color:var(--pink-d);letter-spacing:3px}
 .s-l{display:flex;align-items:center;gap:10px;width:100%;padding:9px 14px;border-radius:16px;background:var(--card2);
- border:2px solid var(--line);font-family:'Jua';font-size:15px;transition:.16s}
+ border:2px solid var(--line);font-family:'Malang','Jua';font-size:15px;transition:.16s}
 .s-l:hover{background:var(--pink-s)}
 .s-tags{display:grid;gap:6px;width:100%;margin-top:4px}
 .s-util{display:flex;align-items:center;gap:8px;margin-top:4px}
@@ -93,7 +98,7 @@ body.dark .dk .knob{top:13px;background:var(--pink-d)}
 .card.bday .lab{font-size:13px;color:var(--text-s)}
 .card.bday b{font-size:17px;color:var(--text);letter-spacing:-.2px}
 .card.bday .dday{display:inline-block;margin-top:5px;background:var(--pink);color:var(--pink-d);border-radius:999px;
- padding:3px 14px;font-size:15px;font-style:normal;font-family:'Jua'}
+ padding:3px 14px;font-size:15px;font-style:normal;font-family:'Malang','Jua'}
 .prof .line{font-family:'Gaegu',cursive;font-weight:700;font-size:21px;color:var(--pink-d);margin:-4px 0 14px;letter-spacing:.3px}
 .pgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}
 .pf{background:var(--card2);border:2px solid var(--line);border-radius:18px;padding:13px 6px;text-align:center;
@@ -112,7 +117,7 @@ body.dark .dk .knob{top:13px;background:var(--pink-d)}
 .r2{display:grid;grid-template-columns:1.45fr 1fr;gap:18px;align-items:stretch}
 .r2col{display:grid;grid-template-rows:1fr auto;gap:18px;min-width:0}
 .rl{display:grid;grid-template-columns:1fr 1fr;gap:12px 26px;align-items:start}
-.rgrp .rh{display:block;font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:14.5px;
+.rgrp .rh{display:block;font-family:'Malang','Noto Sans KR',sans-serif;font-weight:700;font-size:14.5px;
  color:var(--pink-d);margin-bottom:5px;letter-spacing:-.2px;line-height:1.5}
 .rgrp ul{display:grid;gap:1px}
 .rgrp li{position:relative;padding:2px 0 2px 12px;font-size:13.5px;color:var(--text-s);line-height:1.75}
@@ -139,11 +144,11 @@ footer{text-align:center;color:var(--text-s);font-size:12px;line-height:1.8;padd
 .modal{position:fixed;inset:0;background:rgba(120,95,70,.34);display:none;place-items:center;z-index:95;padding:20px}
 .modal.on{display:grid}
 .modal .mb{background:var(--card);border:3px solid var(--pink);border-radius:24px;padding:26px;width:100%;max-width:420px}
-.modal h2{font-family:'Jua';color:var(--pink-d);margin-bottom:12px;font-size:21px}
+.modal h2{font-family:'Malang','Jua';color:var(--pink-d);margin-bottom:12px;font-size:21px}
 .modal textarea{width:100%;height:130px;border:2px solid var(--line);border-radius:14px;padding:13px;font-family:inherit;
  font-size:14px;resize:none;background:var(--card2);color:var(--text);outline:none}
 .modal .mr{display:flex;gap:8px;margin-top:12px}
-.modal .mr button{flex:1;padding:12px;border:0;border-radius:12px;cursor:pointer;font-family:'Jua';font-size:15px}
+.modal .mr button{flex:1;padding:12px;border:0;border-radius:12px;cursor:pointer;font-family:'Malang','Jua';font-size:15px}
 .modal .mr .ok{background:var(--pink-d);color:#fff}
 .modal .mr .no{background:var(--cream);color:var(--gold)}
 
@@ -354,7 +359,7 @@ function closeAsk(){document.getElementById('askModal').classList.remove('on')}
  if(b<t)b=new Date(y+1,9,15);var n=Math.round((b-t)/86400000);
  document.querySelectorAll('.dday').forEach(e=>e.textContent=n===0?'오늘!':'D-'+n);})();
 document.addEventListener('click',function(e){var a=e.target.closest('.avatar');if(!a)return;
- a.animate([{transform:'scale(1)'},{transform:'scale(1.02)'},{transform:'scale(1)'}],{duration:440,easing:'ease-out'});
+ a.animate([{transform:'scale(1)'},{transform:'scale(1.14) rotate(-3deg)'},{transform:'scale(.94) rotate(2deg)'},{transform:'scale(1.06)'},{transform:'scale(1)'}],{duration:620,easing:'cubic-bezier(.2,1.4,.4,1)'});
  for(var i=0;i<6;i++){var s=document.createElementNS('http://www.w3.org/2000/svg','svg');
   var u=document.createElementNS('http://www.w3.org/2000/svg','use');u.setAttribute('href', i%2?'#i-heart':'#i-berry');s.appendChild(u);
   s.setAttribute('width',22);s.setAttribute('height',22);

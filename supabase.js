@@ -94,11 +94,11 @@ async function uploadImage(file, folder = 'uploads') {
     const blob = await compressImage(file);
     const rand = Math.random().toString(36).slice(2, 8);
     const path = `${folder}/${Date.now()}_${rand}.jpg`;
-    const { error } = await db.storage.from('{{버킷이름}}').upload(path, blob, {
+    const { error } = await db.storage.from('images').upload(path, blob, {
       upsert: true, contentType: 'image/jpeg'
     });
     if (error) { console.error('uploadImage 오류:', error); return null; }
-    const { data } = db.storage.from('{{버킷이름}}').getPublicUrl(path);
+    const { data } = db.storage.from('images').getPublicUrl(path);
     return data?.publicUrl || null;
   } catch (e) {
     console.error('uploadImage 예외:', e);

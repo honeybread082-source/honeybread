@@ -7,6 +7,10 @@
   <link rel="icon" type="image/jpeg" href="https://profile.img.sooplive.co.kr/LOGO/20/2059865/2059865.jpg">
   <link href="https://fonts.googleapis.com/css2?family=Jua&family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
+@font-face{font-family:'Malang';
+ src:url('../GeekbleMalang2.woff2') format('woff2'),url('../GeekbleMalang2.woff') format('woff');
+ font-weight:400;font-style:normal;font-display:swap}
+
     :root{--bg:#FFF6E4;--page:#FFFBF0;--card:#FFFDF7;--card2:#FFF7E6;
       --pink:#FFD9E8;--pink-s:#FFF0F6;--pink-d:#F08BB0;
       --gold:#E8A33D;--gold-d:#D08F2E;--cream:#FFF3D6;
@@ -17,8 +21,8 @@
       --text:#F5E9DC;--text-soft:#C3A9A0;--line:#4E3D4A;--line-p:#5A3F52;
       --shadow:0 8px 24px rgba(0,0,0,.35);--shadow-hover:0 14px 32px rgba(0,0,0,.42)}
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Noto Sans KR',sans-serif;color:var(--text);background:var(--bg);line-height:1.75;padding:26px 16px}
-    h1,h2,h3,.page-title,.card-title,.btn,.tab-btn,.login-title{font-family:'Jua',sans-serif;font-weight:400}
+    body{font-family:'Malang','Noto Sans KR',sans-serif;color:var(--text);background:var(--bg);line-height:1.75;padding:26px 16px}
+    h1,h2,h3,.page-title,.card-title,.btn,.tab-btn,.login-title{font-family:'Malang','Jua',sans-serif;font-weight:400}
     input,textarea,select{font-family:inherit}
     .container{max-width:1080px;margin:0 auto;background:var(--page);border-radius:34px;padding:24px;
       box-shadow:0 24px 60px rgba(200,150,90,.16)}
@@ -77,7 +81,7 @@
     /* 요일 */
     .week-edit{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
     .we{background:var(--card2);border:2px solid var(--line);border-radius:16px;padding:12px 6px;text-align:center}
-    .we b{display:block;font-family:'Jua';font-weight:400;font-size:17px;color:var(--gold);margin-bottom:6px}
+    .we b{display:block;font-family:'Malang','Jua';font-weight:400;font-size:17px;color:var(--gold);margin-bottom:6px}
     .we select,.we input{width:100%;border:2px solid var(--line);border-radius:10px;padding:6px 4px;font-size:12px;
       background:var(--card);color:var(--text);text-align:center;outline:none}
     .we select{margin-bottom:5px}

@@ -5,6 +5,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jua&family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
+@font-face{font-family:'Malang';
+ src:url('../GeekbleMalang2.woff2') format('woff2'),url('../GeekbleMalang2.woff') format('woff');
+ font-weight:400;font-style:normal;font-display:swap}
+
 :root{
   --bg:#FFF6E4; --page:#FFFBF0;
   --card:#FFFDF7; --card2:#FFF7E6;
@@ -22,15 +26,16 @@ body.dark{
   --sh:0 8px 24px rgba(0,0,0,.35);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Noto Sans KR',sans-serif;color:var(--text);line-height:1.75;-webkit-font-smoothing:antialiased;
+body{font-family:'Malang','Noto Sans KR',sans-serif;color:var(--text);line-height:1.75;-webkit-font-smoothing:antialiased;
  background-color:var(--bg);
  background-image:radial-gradient(circle at 12% 18%, rgba(255,217,232,.30) 0 12%, transparent 42%),
   radial-gradient(circle at 88% 8%, rgba(255,243,214,.55) 0 12%, transparent 40%);
  background-attachment:fixed;padding:26px 16px}
 body.dark{background-image:none}
 img{max-width:100%;display:block}a{text-decoration:none;color:inherit}ul{list-style:none}
-h1,h2,h4,b,.tag,.ask,.cnt{font-family:'Jua',sans-serif;font-weight:400}
+h1,h2,h4,b,.tag,.ask,.cnt{font-family:'Malang','Jua',sans-serif;font-weight:400}
 .ic{flex:none;vertical-align:middle}.avatar{cursor:pointer}
+.s-av{cursor:pointer}
 .stk{position:absolute;z-index:5;pointer-events:none;filter:drop-shadow(0 4px 8px rgba(224,169,59,.22))}
 
 .grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:212px 1fr;gap:22px;align-items:start}
@@ -46,10 +51,10 @@ body.ready .page,body.ready .side{opacity:1}
 .s-av img{width:100%;height:100%;object-fit:cover;border-radius:50%}
 .s-logo{text-align:center;margin-top:2px}
 .s-logo b{display:block;font-size:26px;color:var(--gold);line-height:1.1}
-.s-logo span{display:inline-flex;align-items:center;gap:4px;font-family:'Jua';font-size:14px;color:var(--pink-d)}
+.s-logo span{display:inline-flex;align-items:center;gap:4px;font-family:'Malang','Jua';font-size:14px;color:var(--pink-d)}
 .s-menu{display:grid;gap:8px;width:100%;margin-top:4px}
 .sm{display:flex;align-items:center;gap:9px;padding:11px 16px;border-radius:999px;background:var(--card2);
- border:2px solid var(--line-p);font-family:'Jua';font-size:16px;color:var(--text);transition:.16s}
+ border:2px solid var(--line-p);font-family:'Malang','Jua';font-size:16px;color:var(--text);transition:.16s}
 .sm:hover{background:var(--pink-s);transform:translateY(-2px)}
 .sm.on{background:var(--pink);color:var(--pink-d)}
 .s-line{width:86%;border-top:2px dashed var(--line-p);margin:2px 0}
@@ -111,7 +116,7 @@ body.dark .dk .knob{top:13px;background:var(--pink-d)}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}
 .col{display:grid;gap:8px;align-content:start}
 .it{display:flex;align-items:center;background:var(--card2);border:2px solid var(--line);border-radius:12px;
- padding:10px 16px;font-size:14px;color:var(--pink-d);font-family:'Jua',sans-serif;transition:.16s}
+ padding:10px 16px;font-size:14px;color:var(--pink-d);font-family:'Malang','Jua',sans-serif;transition:.16s}
 .it:hover{background:var(--pink-s);border-color:var(--line-p);color:var(--gold);transform:translateX(3px)}
 .it i{margin-left:auto;font-style:normal;color:var(--pink-d);font-size:13px;opacity:.55}
 
@@ -121,11 +126,11 @@ footer{text-align:center;color:var(--text-s);font-size:12px;line-height:1.8;padd
 .modal{position:fixed;inset:0;background:rgba(120,95,70,.34);display:none;place-items:center;z-index:95;padding:20px}
 .modal.on{display:grid}
 .modal .mb{background:var(--card);border:3px solid var(--pink);border-radius:24px;padding:26px;width:100%;max-width:420px}
-.modal h2{font-family:'Jua';color:var(--pink-d);margin-bottom:12px;font-size:21px}
+.modal h2{font-family:'Malang','Jua';color:var(--pink-d);margin-bottom:12px;font-size:21px}
 .modal textarea{width:100%;height:130px;border:2px solid var(--line);border-radius:14px;padding:13px;font-family:inherit;
  font-size:14px;resize:none;background:var(--card2);color:var(--text);outline:none}
 .modal .mr{display:flex;gap:8px;margin-top:12px}
-.modal .mr button{flex:1;padding:12px;border:0;border-radius:12px;cursor:pointer;font-family:'Jua';font-size:15px}
+.modal .mr button{flex:1;padding:12px;border:0;border-radius:12px;cursor:pointer;font-family:'Malang','Jua';font-size:15px}
 .modal .mr .ok{background:var(--pink-d);color:#fff}
 .modal .mr .no{background:var(--cream);color:var(--gold)}
 
@@ -277,7 +282,7 @@ function openAsk(){document.getElementById('askModal').classList.add('on')}
 function closeAsk(){document.getElementById('askModal').classList.remove('on')}
 
 document.addEventListener('click',function(e){var a=e.target.closest('.avatar');if(!a)return;
- a.animate([{transform:'scale(1)'},{transform:'scale(1.02)'},{transform:'scale(1)'}],{duration:440,easing:'ease-out'});
+ a.animate([{transform:'scale(1)'},{transform:'scale(1.14) rotate(-3deg)'},{transform:'scale(.94) rotate(2deg)'},{transform:'scale(1.06)'},{transform:'scale(1)'}],{duration:620,easing:'cubic-bezier(.2,1.4,.4,1)'});
  for(var i=0;i<6;i++){var s=document.createElementNS('http://www.w3.org/2000/svg','svg');
   var u=document.createElementNS('http://www.w3.org/2000/svg','use');u.setAttribute('href', i%2?'#i-heart':'#i-berry');s.appendChild(u);
   s.setAttribute('width',22);s.setAttribute('height',22);
