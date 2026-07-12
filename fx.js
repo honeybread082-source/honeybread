@@ -22,7 +22,7 @@ var FX_COUNT = 14;                            // 떠다니는 입자 개수 (많
 var FX_TILT  = true;                          // 카드 마우스오버 살짝 기울기 (끄려면 false)
 
 /* ─ 로딩화면 + 페이지 전환(커지는 등장) — 보통 그대로 두세요 ─ */
-var FX_LOADER      = true;   // 페이지 넘어갈 때 로딩화면 + 레이아웃 커지는 등장 (끄려면 false)
+var FX_LOADER      = false;  // ⛔ transition.js(영상 전환)를 쓰므로 끔 — 켜면 로딩화면이 이중으로 뜸
 var FX_LOADER_IMG  = '';     // 로딩화면 가운데 이미지 URL. 비우면 자동: 마스코트(--char) → SOOP 프사 → 글자
 var FX_LOADER_TEXT = '';     // 이미지 없을 때/이름표에 띄울 글자. 비우면 상단 로고 글자 자동
 var FX_TRANS_MS    = 800;    // 커지는 등장 길이(ms). 더 느리게 = 숫자 ↑ / 더 빠르게 = 숫자 ↓
