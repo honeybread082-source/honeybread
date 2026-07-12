@@ -1,0 +1,231 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>꿀빵지 · 일정</title>
+<link rel="icon" type="image/jpeg" href="https://profile.img.sooplive.co.kr/LOGO/20/2059865/2059865.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFF6E4; --page:#FFFBF0; --card:#FFFDF7; --card2:#FFF7E6;
+  --pink:#FFD9E8; --pink-s:#FFF0F6; --pink-d:#F08BB0;
+  --gold:#E8A33D; --gold-d:#D08F2E; --cream:#FFF3D6;
+  --text:#6B5847; --text-s:#9C8570; --line:#F6E3C6; --line-p:#FBD9E6;
+  --sh:0 8px 24px rgba(224,169,59,.10);
+}
+body.dark{
+  --bg:#241C22; --page:#2C2430; --card:#342B36; --card2:#3B3140;
+  --pink:#5A3A50; --pink-s:#40303E; --pink-d:#FFB4D4;
+  --gold:#FFC96B; --gold-d:#FFB4D4; --cream:#453A2E;
+  --text:#F5E9DC; --text-s:#C3A9A0; --line:#4E3D4A; --line-p:#5A3F52;
+  --sh:0 8px 24px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans KR',sans-serif;color:var(--text);line-height:1.75;-webkit-font-smoothing:antialiased;
+ text-rendering:optimizeLegibility;-moz-osx-font-smoothing:grayscale;
+ background-color:var(--bg);
+ background-image:radial-gradient(circle at 12% 18%, rgba(255,217,232,.30) 0 12%, transparent 42%),
+  radial-gradient(circle at 88% 8%, rgba(255,243,214,.55) 0 12%, transparent 40%);
+ background-attachment:fixed;padding:26px 16px}
+body.dark{background-image:none}
+img{max-width:100%;display:block}a{text-decoration:none;color:inherit}ul{list-style:none}
+h1,h2,h3,h4,.ttl,.en,.s-logo b{font-family:'Jua',sans-serif;font-weight:400;letter-spacing:.3px}
+b,.tag,.ask,.sm,.badge{font-family:'Noto Sans KR',sans-serif;font-weight:700;letter-spacing:-.2px}
+.ic{flex:none;vertical-align:middle}.avatar{cursor:pointer}
+.stk{position:absolute;z-index:5;pointer-events:none;filter:drop-shadow(0 4px 8px rgba(224,169,59,.22))}
+.grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:212px 1fr;gap:22px;align-items:start}
+.page,.side{opacity:0;transition:opacity .35s}
+body.ready .page,body.ready .side{opacity:1}
+.page{background:var(--page);border-radius:34px;padding:22px;display:grid;gap:18px;min-width:0;
+ box-shadow:0 24px 60px rgba(200,150,90,.16)}
+.side{position:sticky;top:26px;background:var(--card);border:2px solid var(--line);border-radius:30px;
+ padding:22px 14px 24px;display:grid;justify-items:center;gap:10px;box-shadow:var(--sh)}
+.s-av{width:118px;height:118px;border-radius:50%;padding:5px;background:var(--pink)}
+.s-av img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.s-logo{text-align:center;margin-top:2px}
+.s-logo b{display:block;font-size:26px;color:var(--gold);line-height:1.1}
+.s-logo span{display:inline-flex;align-items:center;gap:4px;font-family:'Jua';font-size:14px;color:var(--pink-d)}
+.s-menu{display:grid;gap:8px;width:100%;margin-top:4px}
+.sm{display:flex;align-items:center;gap:9px;padding:11px 16px;border-radius:999px;background:var(--card2);
+ border:2px solid var(--line-p);font-size:15px;color:var(--text);transition:.16s}
+.sm:hover{background:var(--pink-s);transform:translateY(-2px)}
+.sm.on{background:var(--pink);color:var(--pink-d)}
+.s-line{width:86%;border-top:2px dashed var(--line-p);margin:2px 0}
+.s-tags{display:grid;gap:6px;width:100%;margin-top:4px}
+.tag{display:inline-block;background:var(--pink-s);color:var(--pink-d);font-size:12.5px;padding:6px 14px;
+ border-radius:999px;border:1.5px solid var(--line-p);text-align:center}
+.s-util{display:flex;align-items:center;gap:8px;margin-top:4px}
+.ask{border:0;cursor:pointer;background:var(--pink);color:var(--pink-d);border-radius:999px;padding:9px 20px;font-size:14px}
+.dk{width:22px;height:33px;flex:none;border-radius:999px;background:var(--cream);border:2px solid var(--line);
+ position:relative;cursor:pointer}
+.dk .knob{position:absolute;left:2px;top:2px;width:14px;height:14px;border-radius:50%;background:var(--pink);transition:.22s}
+body.dark .dk .knob{top:13px;background:var(--pink-d)}
+.card{position:relative;background:var(--card);border:2px solid var(--line);border-radius:24px;padding:24px 30px;
+ box-shadow:var(--sh)}
+.ttl{display:flex;align-items:center;gap:8px;font-size:19px;color:var(--gold);
+ padding-bottom:10px;margin-bottom:16px;border-bottom:2px dashed var(--line)}
+.ttl .r{margin-left:auto;font-family:'Noto Sans KR';font-weight:700;font-size:12.5px;color:var(--text-s)}
+.phead{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.phead h1{font-size:32px;color:var(--gold)}
+.phead .sub{font-family:'Gaegu',cursive;font-weight:700;font-size:18px;color:var(--pink-d)}
+footer{text-align:center;color:var(--text-s);font-size:12px;line-height:1.8;padding:14px 0 4px}
+.modal{position:fixed;inset:0;background:rgba(120,95,70,.34);display:none;place-items:center;z-index:95;padding:20px}
+.modal.on{display:grid}
+.modal .mb{background:var(--card);border:3px solid var(--pink);border-radius:24px;padding:26px;width:100%;max-width:420px}
+.modal h2{font-family:'Jua';color:var(--pink-d);margin-bottom:12px;font-size:21px}
+.modal textarea{width:100%;height:130px;border:2px solid var(--line);border-radius:14px;padding:13px;font-family:inherit;
+ font-size:14px;resize:none;background:var(--card2);color:var(--text);outline:none}
+.modal .mr{display:flex;gap:8px;margin-top:12px}
+.modal .mr button{flex:1;padding:12px;border:0;border-radius:12px;cursor:pointer;font-family:'Jua';font-size:15px}
+.modal .mr .ok{background:var(--pink-d);color:#fff}
+.modal .mr .no{background:var(--cream);color:var(--gold)}
+@media(max-width:1100px){.grid{grid-template-columns:1fr}.side{position:static}}
+
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+.wd{background:var(--card2);border:2px solid var(--line);border-radius:18px;padding:16px 6px;text-align:center;
+ display:grid;justify-items:center;gap:3px}
+.wd em{font-style:normal;font-family:'Jua';font-size:20px;color:var(--gold);
+ background:var(--pink-s);width:38px;height:38px;border-radius:50%;display:grid;place-items:center}
+.wd b{font-size:14px;color:var(--pink-d)}
+.wd i{font-style:normal;font-size:13px;color:var(--text-s);font-weight:500}
+.wd.off{border-style:dashed}
+.wd.off b{color:var(--text-s)}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.wh{text-align:center;font-family:'Jua';font-size:14px;color:var(--text-s);padding:4px 0}
+.wh.sun{color:var(--pink-d)}
+.cell{min-height:92px;background:var(--card2);border:2px solid var(--line);border-radius:14px;padding:8px}
+.cell.empty{background:transparent;border:0}
+.cell em{font-style:normal;font-family:'Jua';font-size:15px;color:var(--text)}
+.cell.sun em{color:var(--pink-d)}
+.cell.has{background:var(--card);border-color:var(--line-p)}
+.ev{display:block;margin-top:5px;font-size:11px;font-weight:700;padding:3px 8px;border-radius:8px;line-height:1.4}
+.ev.song{background:#FFE3F0;color:#D96AA0}
+.ev.game{background:#E4F0FF;color:#5C90CC}
+.ev.talk{background:#FFF0CE;color:#C9922E}
+.ev.asmr{background:#E8F5E4;color:#6FA25C}
+.ev.event{background:#F0E6FF;color:#8B6FC4}
+.ev.bday{background:#FFD9E8;color:#D0578F}
+body.dark .ev{filter:brightness(.75)}
+.legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;padding-top:14px;border-top:2px dashed var(--line)}
+.lg{font-size:11.5px;font-weight:700;padding:4px 12px;border-radius:999px}
+.lg.song{background:#FFE3F0;color:#D96AA0}
+.lg.game{background:#E4F0FF;color:#5C90CC}
+.lg.talk{background:#FFF0CE;color:#C9922E}
+.lg.asmr{background:#E8F5E4;color:#6FA25C}
+.lg.event{background:#F0E6FF;color:#8B6FC4}
+.lg.bday{background:#FFD9E8;color:#D0578F}
+.nav-b{border:2px solid var(--line);background:var(--card2);color:var(--text-s);cursor:pointer;
+ width:28px;height:28px;border-radius:50%;font-size:14px;margin-left:4px}
+.nav-b:hover{background:var(--pink-s);color:var(--pink-d)}
+@media(max-width:900px){.week,.cal{grid-template-columns:repeat(4,1fr)}.wh{display:none}}
+</style></head><body data-page="schedule">
+<script>if(localStorage.getItem('theme')==='dark')document.body.classList.add('dark');</script>
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="i-cake" viewBox="0 0 64 64"><path d="M10 54V37q0-6 6-6h32q6 0 6 6v17z" fill="#FFE1B0" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/><path d="M10 43q7 6 14 0t14 0 14 0" fill="none" stroke="#F79CBE" stroke-width="3.4" stroke-linecap="round"/><circle cx="32" cy="24" r="6" fill="#F27FA9" stroke="#fff" stroke-width="2.4"/><path d="M32 18v-6" stroke="#F27FA9" stroke-width="2.6" stroke-linecap="round"/></symbol>
+<symbol id="i-cat" viewBox="0 0 64 64"><path d="M14 30 11 13l16 9z" fill="#F0BE7C" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/><path d="M50 30 53 13l-16 9z" fill="#F0BE7C" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/><ellipse cx="32" cy="38" rx="22" ry="18" fill="#FBDCA8" stroke="#fff" stroke-width="2.6"/><path d="M20 27q6 4 10 4t10-4" fill="#E9A85C" opacity=".5"/><path d="M22 37q3.5 4.5 7 0M35 37q3.5 4.5 7 0" fill="none" stroke="#B57C3C" stroke-width="2.4" stroke-linecap="round"/><ellipse cx="18" cy="44" rx="4.4" ry="2.8" fill="#F7AEC6"/><ellipse cx="46" cy="44" rx="4.4" ry="2.8" fill="#F7AEC6"/><path d="M29 44h6l-3 3.2z" fill="#E68CA9"/></symbol>
+<symbol id="i-catsleep" viewBox="0 0 64 64"><path d="M11 33 8 18l14 9z" fill="#F0BE7C" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><path d="M41 33 44 18l-14 9z" fill="#F0BE7C" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><ellipse cx="26" cy="40" rx="19" ry="15" fill="#FBDCA8" stroke="#fff" stroke-width="2.4"/><path d="M15 38q3.5 4 7 0M30 38q3.5 4 7 0" fill="none" stroke="#B57C3C" stroke-width="2.2" stroke-linecap="round"/><ellipse cx="13" cy="45" rx="4" ry="2.6" fill="#F7AEC6"/><ellipse cx="39" cy="45" rx="4" ry="2.6" fill="#F7AEC6"/><text x="46" y="24" font-size="13" fill="#B57C3C" font-family="Jua">z</text><text x="54" y="15" font-size="9" fill="#B57C3C" font-family="Jua">z</text></symbol>
+<symbol id="i-heart" viewBox="0 0 64 64"><path d="M32 55S8 41 8 25C8 16 15 11 22 11c5 0 8 3 10 6 2-3 5-6 10-6 7 0 12 5 12 14 0 16-22 30-22 30z" fill="#F27FA9" stroke="#fff" stroke-width="2.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-crown" viewBox="0 0 64 64"><path d="M8 46 12 18l12 12 8-16 8 16 12-12 4 28z" fill="#FFD46A" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/><rect x="9" y="45" width="46" height="8" rx="4" fill="#F4C04E"/></symbol>
+<symbol id="i-gift" viewBox="0 0 64 64"><rect x="9" y="27" width="46" height="28" rx="6" fill="#F9BAD6" stroke="#fff" stroke-width="2.4"/><rect x="7" y="19" width="50" height="12" rx="5" fill="#F27FA9" stroke="#fff" stroke-width="2.2"/><path d="M32 19v36" stroke="#fff" stroke-width="3.6"/><path d="M32 19q-4-12-12-8t12 8zM32 19q4-12 12-8t-12 8z" fill="#FFD46A" stroke="#fff" stroke-width="2"/></symbol>
+<symbol id="i-berry" viewBox="0 0 64 64"><path d="M32 57c-12 0-20-10-20-21 0-8 9-13 20-13s20 5 20 13c0 11-8 21-20 21z" fill="#F5798F" stroke="#fff" stroke-width="2.6" stroke-linejoin="round"/><path d="M32 23c-3-7-10-9-15-8 2 6 8 9 15 8zM32 23c3-7 10-9 15-8-2 6-8 9-15 8z" fill="#8FC97A" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/><circle cx="25" cy="36" r="1.8" fill="#fff"/><circle cx="39" cy="38" r="1.8" fill="#fff"/><circle cx="32" cy="47" r="1.8" fill="#fff"/></symbol>
+<symbol id="i-bread" viewBox="0 0 64 64"><path d="M13 26q0-11 19-11t19 11v25q0 6-6 6H19q-6 0-6-6z" fill="#F8DFA6" stroke="#fff" stroke-width="2.6" stroke-linejoin="round"/><path d="M13 26q0-11 19-11t19 11v6q0 4-5 4H18q-5 0-5-4z" fill="#EFC172"/></symbol>
+<symbol id="i-crois" viewBox="0 0 64 64"><path d="M6 44q10-24 26-24t26 24q-11-7-17-5-4-11-9-11t-9 11q-6-2-17 5z" fill="#E8A85C" stroke="#fff" stroke-width="2.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-ice" viewBox="0 0 64 64"><path d="M18 17h28l-4 37q-.5 5-5 5H27q-4.5 0-5-5z" fill="#C9A184" stroke="#fff" stroke-width="2.6" stroke-linejoin="round"/><path d="M19 25h26l-1 8H20z" fill="#EEDFCE"/><path d="M40 9l4 9" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></symbol>
+<symbol id="i-candy" viewBox="0 0 64 64"><circle cx="32" cy="30" r="15" fill="#F27FA9" stroke="#fff" stroke-width="2.6"/><path d="M32 15a15 15 0 0 1 0 30" fill="#FFF2F7" opacity=".55"/><path d="M32 45v12M32 57l-6 4M32 57l6 4" stroke="#E8A85C" stroke-width="3" stroke-linecap="round" fill="none"/></symbol>
+<symbol id="i-spice" viewBox="0 0 64 64"><rect x="21" y="21" width="22" height="32" rx="7" fill="#E3B27C" stroke="#fff" stroke-width="2.4"/><rect x="23" y="12" width="18" height="10" rx="4" fill="#C29056" stroke="#fff" stroke-width="2"/><circle cx="45" cy="42" r="12" fill="none" stroke="#E4586F" stroke-width="4"/><path d="M37 34l16 16" stroke="#E4586F" stroke-width="4" stroke-linecap="round"/></symbol>
+<symbol id="i-spider" viewBox="0 0 64 64"><ellipse cx="32" cy="36" rx="11" ry="12" fill="#8B7461"/><circle cx="32" cy="23" r="6.5" fill="#8B7461"/><path d="M21 30 8 21M21 38 8 38M21 45 10 53M43 30 56 21M43 38 56 38M43 45 54 53" stroke="#8B7461" stroke-width="2.8" stroke-linecap="round" fill="none"/></symbol>
+<symbol id="i-mic" viewBox="0 0 64 64"><rect x="24" y="8" width="16" height="29" rx="8" fill="#F49CC0" stroke="#fff" stroke-width="2.2"/><path d="M16 31q0 16 16 16t16-16" fill="none" stroke="#F49CC0" stroke-width="3.6" stroke-linecap="round"/><path d="M32 47v8M24 55h16" stroke="#F49CC0" stroke-width="3.6" stroke-linecap="round"/></symbol>
+<symbol id="i-sun" viewBox="0 0 64 64"><circle cx="32" cy="32" r="12" fill="#FFD46A" stroke="#fff" stroke-width="2.4"/><path d="M32 7v8M32 49v8M7 32h8M49 32h8M14 14l6 6M44 44l6 6M50 14l-6 6M20 44l-6 6" stroke="#FFD46A" stroke-width="3.6" stroke-linecap="round"/></symbol>
+<symbol id="i-home" viewBox="0 0 64 64"><path d="M8 30 32 10l24 20v22q0 5-5 5H13q-5 0-5-5z" fill="#F27FA9" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/><rect x="25" y="38" width="14" height="19" rx="3" fill="#FFF3E4"/></symbol>
+<symbol id="i-cal" viewBox="0 0 64 64"><rect x="8" y="15" width="48" height="41" rx="8" fill="#F9BAD6" stroke="#fff" stroke-width="2.4"/><path d="M8 27h48" stroke="#fff" stroke-width="2.4"/><path d="M19 9v10M45 9v10" stroke="#E86FAF" stroke-width="4" stroke-linecap="round"/><circle cx="21" cy="39" r="3" fill="#E86FAF"/><circle cx="32" cy="39" r="3" fill="#E86FAF"/><circle cx="43" cy="39" r="3" fill="#E86FAF"/></symbol>
+<symbol id="i-note" viewBox="0 0 64 64"><path d="M45 11v29M23 19v29M23 19l22-8" stroke="#E86FAF" stroke-width="4" stroke-linecap="round" fill="none"/><ellipse cx="16" cy="49" rx="8" ry="6" fill="#E86FAF"/><ellipse cx="38" cy="41" rx="8" ry="6" fill="#E86FAF"/></symbol>
+<symbol id="i-paw" viewBox="0 0 64 64"><ellipse cx="32" cy="43" rx="15" ry="12" fill="#F49CC0" stroke="#fff" stroke-width="2.4"/><ellipse cx="15" cy="26" rx="5.6" ry="7" fill="#F49CC0" stroke="#fff" stroke-width="2.2"/><ellipse cx="26" cy="19" rx="5.6" ry="7" fill="#F49CC0" stroke="#fff" stroke-width="2.2"/><ellipse cx="38" cy="19" rx="5.6" ry="7" fill="#F49CC0" stroke="#fff" stroke-width="2.2"/><ellipse cx="49" cy="26" rx="5.6" ry="7" fill="#F49CC0" stroke="#fff" stroke-width="2.2"/></symbol>
+<symbol id="i-play" viewBox="0 0 64 64"><rect x="7" y="15" width="50" height="34" rx="10" fill="#F27FA9" stroke="#fff" stroke-width="2.4"/><path d="M27 25l15 7-15 7z" fill="#fff"/><path d="M22 55h20" stroke="#F27FA9" stroke-width="3.4" stroke-linecap="round"/></symbol>
+<symbol id="i-spark" viewBox="0 0 64 64"><path d="M32 5q3 21 27 27-24 6-27 27-3-21-27-27 24-6 27-27z" fill="#FFDE85" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/></symbol>
+<symbol id="i-star" viewBox="0 0 64 64"><path d="M32 7l7.5 16.5L57 26l-13 12.5 3.5 18L32 47.5 16.5 56.5 20 38.5 7 26l17.5-2.5z" fill="#FFD46A" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/></symbol>
+<symbol id="i-ribbon" viewBox="0 0 64 64"><path d="M32 33 8 19v29z" fill="#F9BAD6" stroke="#fff" stroke-width="2.6" stroke-linejoin="round"/><path d="M32 33 56 19v29z" fill="#F9BAD6" stroke="#fff" stroke-width="2.6" stroke-linejoin="round"/><circle cx="32" cy="33" r="7" fill="#F27FA9" stroke="#fff" stroke-width="2.4"/></symbol>
+<symbol id="i-radio" viewBox="0 0 64 64"><rect x="6" y="25" width="52" height="29" rx="8" fill="#F9BAD6" stroke="#fff" stroke-width="2.4"/><circle cx="21" cy="40" r="9" fill="#FFF2F7" stroke="#F27FA9" stroke-width="2.2"/><circle cx="21" cy="40" r="3" fill="#F27FA9"/><rect x="37" y="33" width="16" height="5" rx="2.5" fill="#FFF2F7"/><rect x="37" y="43" width="16" height="5" rx="2.5" fill="#FFF2F7"/><path d="M18 25 40 9" stroke="#F27FA9" stroke-width="2.8" stroke-linecap="round"/><circle cx="41" cy="8" r="3" fill="#F27FA9"/></symbol>
+<symbol id="i-soop" viewBox="0 0 64 64"><rect x="6" y="10" width="52" height="44" rx="13" fill="#5B8DEF"/><circle cx="25" cy="32" r="7" fill="none" stroke="#fff" stroke-width="4"/><circle cx="39" cy="32" r="7" fill="none" stroke="#fff" stroke-width="4"/></symbol>
+<symbol id="i-yt" viewBox="0 0 64 64"><rect x="5" y="16" width="54" height="32" rx="10" fill="#E8564B"/><path d="M27 26l14 6-14 6z" fill="#fff"/></symbol>
+<symbol id="i-x" viewBox="0 0 64 64"><rect x="6" y="6" width="52" height="52" rx="14" fill="#2B2B2B"/><path d="M21 21l22 22M43 21L21 43" stroke="#fff" stroke-width="5" stroke-linecap="round"/></symbol>
+</defs></svg>
+<div class="grid">
+ <aside class="side">
+   <div class="s-av"><img class="avatar" data-avatar src="https://profile.img.sooplive.co.kr/LOGO/20/2059865/2059865.jpg" referrerpolicy="no-referrer" alt="꿀빵지"></div>
+   <div class="s-logo"><b>꿀빵지</b><span>Honeybread <svg class="ic " width="13" height="13"><use href="#i-paw"/></svg></span></div>
+   <nav class="s-menu">
+     <a href="../index.html" class="sm"><svg class="ic " width="20" height="20"><use href="#i-home"/></svg><span>프로필</span></a><a href="../schedule/" class="sm on"><svg class="ic " width="20" height="20"><use href="#i-cal"/></svg><span>일정</span></a><a href="../work/" class="sm"><svg class="ic " width="20" height="20"><use href="#i-paw"/></svg><span>업보</span></a><a href="../dress/" class="sm"><svg class="ic " width="20" height="20"><use href="#i-ribbon"/></svg><span>옷장</span></a><a href="../avatar/" class="sm"><svg class="ic " width="20" height="20"><use href="#i-cat"/></svg><span>아바타 정보</span></a>
+   </nav>
+   <div class="s-cat"><svg class="ic " width="40" height="40"><use href="#i-catsleep"/></svg></div>
+   <div class="s-line"></div>
+   <div class="s-tags"><span class="tag">#개냥이</span><span class="tag">#딸기</span><span class="tag">#노래방송</span><span class="tag">#왕밤</span></div>
+   <div class="s-util"><button class="ask" onclick="openAsk()">문의</button>
+     <div class="dk" onclick="toggleDark()"><i class="knob"></i></div></div>
+   <svg class="stk" style="bottom:12px;right:14px;transform:rotate(-8deg)" width="38" height="38"><use href="#i-paw"/></svg>
+ </aside>
+ <main class="page">
+  <div class="card">
+    <div class="phead">
+      <svg class="ic " width="26" height="26"><use href="#i-cal"/></svg><h1>방송 일정</h1>
+      <span class="sub">이번 달 빵지와 만나는 날 <svg class="ic " width="14" height="14"><use href="#i-heart"/></svg></span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="ttl"><svg class="ic " width="18" height="18"><use href="#i-spark"/></svg> 이번 주 <span class="r">매주 반복</span></h3>
+    <div class="week" data-week>
+      <div class="wd ">
+        <em>월</em><b>방송</b><i>20:00</i></div><div class="wd ">
+        <em>화</em><b>방송</b><i>21:00</i></div><div class="wd off">
+        <em>수</em><b>휴방</b></div><div class="wd ">
+        <em>목</em><b>방송</b><i>20:00</i></div><div class="wd ">
+        <em>금</em><b>방송</b><i>22:00</i></div><div class="wd ">
+        <em>토</em><b>방송</b><i>19:00</i></div><div class="wd ">
+        <em>일</em><b>낮방</b><i>15:00</i></div>
+    </div>
+    <svg class="stk" style="top:-16px;right:-14px;transform:rotate(12deg)" width="44" height="44"><use href="#i-berry"/></svg>
+  </div>
+
+  <div class="card">
+    <h3 class="ttl"><svg class="ic " width="18" height="18"><use href="#i-cal"/></svg> <span data-cal-title>2026년 7월</span>
+      <span class="r"><button class="nav-b" onclick="calMove(-1)">‹</button>
+      <button class="nav-b" onclick="calMove(1)">›</button></span></h3>
+    <div class="cal" data-cal>
+      <div class="wh">월</div><div class="wh">화</div><div class="wh">수</div><div class="wh">목</div>
+      <div class="wh">금</div><div class="wh">토</div><div class="wh sun">일</div>
+      <div class="cell empty"></div><div class="cell empty"></div><div class="cell"><em>1</em></div><div class="cell"><em>2</em></div><div class="cell"><em>3</em></div><div class="cell"><em>4</em></div><div class="cell sun"><em>5</em></div><div class="cell"><em>6</em></div><div class="cell"><em>7</em></div><div class="cell"><em>8</em></div><div class="cell"><em>9</em></div><div class="cell"><em>10</em></div><div class="cell"><em>11</em></div><div class="cell sun"><em>12</em></div><div class="cell"><em>13</em></div><div class="cell"><em>14</em></div><div class="cell has"><em>15</em><span class="ev song">테스트</span></div><div class="cell"><em>16</em></div><div class="cell"><em>17</em></div><div class="cell"><em>18</em></div><div class="cell sun"><em>19</em></div><div class="cell"><em>20</em></div><div class="cell"><em>21</em></div><div class="cell"><em>22</em></div><div class="cell"><em>23</em></div><div class="cell"><em>24</em></div><div class="cell"><em>25</em></div><div class="cell sun"><em>26</em></div><div class="cell"><em>27</em></div><div class="cell"><em>28</em></div><div class="cell"><em>29</em></div><div class="cell"><em>30</em></div><div class="cell"><em>31</em></div>
+    </div>
+    <div class="legend">
+      <span class="lg song">노래</span><span class="lg game">게임</span><span class="lg talk">저챗</span><span class="lg asmr">ASMR</span><span class="lg event">이벤트</span><span class="lg bday">생일</span>
+    </div>
+    <svg class="stk" style="bottom:-16px;left:-14px;transform:rotate(-8deg)" width="46" height="46"><use href="#i-cat"/></svg>
+  </div>
+
+  <footer>© 2026 꿀빵지 Official.<br>일정은 사정에 따라 변경될 수 있어요!</footer>
+ </main>
+</div>
+<div class="modal" id="askModal"><div class="mb"><h2>문의 보내기</h2>
+ <textarea id="askText" placeholder="하고 싶은 말을 적어주세요!"></textarea>
+ <div class="mr"><button class="no" onclick="closeAsk()">닫기</button><button class="ok" onclick="sendAsk()">보내기</button></div>
+</div></div>
+<script>
+function toggleDark(){document.body.classList.toggle('dark');
+ localStorage.setItem('theme',document.body.classList.contains('dark')?'dark':'light');}
+function openAsk(){document.getElementById('askModal').classList.add('on')}
+function closeAsk(){document.getElementById('askModal').classList.remove('on')}
+
+document.addEventListener('click',function(e){var a=e.target.closest('.avatar');if(!a)return;
+ a.animate([{transform:'scale(1)'},{transform:'scale(1.02)'},{transform:'scale(1)'}],{duration:440,easing:'ease-out'});
+ for(var i=0;i<6;i++){var s=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  var u=document.createElementNS('http://www.w3.org/2000/svg','use');u.setAttribute('href', i%2?'#i-heart':'#i-berry');s.appendChild(u);
+  s.setAttribute('width',22);s.setAttribute('height',22);
+  s.style.cssText='position:fixed;left:'+e.clientX+'px;top:'+e.clientY+'px;z-index:99;pointer-events:none;transition:.8s ease-out';
+  document.body.appendChild(s);
+  (function(s){setTimeout(function(){
+   s.style.transform='translate('+(Math.random()*140-70)+'px,'+(-55-Math.random()*70)+'px) scale(.4) rotate('+(Math.random()*50-25)+'deg)';
+   s.style.opacity=0;},10);setTimeout(function(){s.remove()},840);})(s);}});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="../supabase.js"></script>
+<script src="../app.js"></script>
+<script src="../fx.js"></script>
+</body></html>
