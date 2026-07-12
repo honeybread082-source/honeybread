@@ -189,14 +189,8 @@ footer{text-align:center;color:var(--text-s);font-size:12px;line-height:1.8;padd
   <div class="card">
     <h3 class="ttl"><svg class="ic " width="18" height="18"><use href="#i-star"/></svg> 업보 뷰어 <span class="r">마지막 업데이트 —</span></h3>
     <input class="search" id="q" placeholder="닉네임 · 아이디로 검색" oninput="filt()">
-    <div class="vgrid" id="vgrid"><div class="vc" data-nick="테스트" data-id="test"
-             onclick='openV("테스트","test",1,`<div class="urow"><span class="nm">테스트</span><span class=ev>테스트</span><span class="ct">1</span></div>`)'>
-          <div class="vfb">테</div>
-          <b class="vn">테스트</b>
-          <em class="vi">@test</em>
-          <span class="vt">1개</span>
-        </div></div>
-    <p class="empty" id="empty">검색 결과가 없어요 <svg class="ic " width="18" height="18"><use href="#i-catsleep"/></svg></p>
+    <div class="vgrid" id="vgrid"></div>
+    <p class="empty" id="empty" style="display:block">검색 결과가 없어요 <svg class="ic " width="18" height="18"><use href="#i-catsleep"/></svg></p>
     <svg class="stk" style="top:-16px;right:-14px;transform:rotate(12deg)" width="44" height="44"><use href="#i-berry"/></svg>
     <svg class="stk" style="bottom:-16px;left:-14px;transform:rotate(-8deg)" width="46" height="46"><use href="#i-cat"/></svg>
   </div>

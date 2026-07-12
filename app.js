@@ -100,7 +100,8 @@ function renderWeek() {
   var box = $('[data-week]'); if (!box) return;
   var W = [];
   try { W = JSON.parse(PROFILE['week'] || '[]'); } catch (e) { }
-  if (!W.length) return;
+  if (!W.length) W = [{s:'방송',t:''},{s:'방송',t:''},{s:'휴방',t:''},{s:'방송',t:''},
+                      {s:'방송',t:''},{s:'방송',t:''},{s:'방송',t:''}];
   var D = ['월', '화', '수', '목', '금', '토', '일'];
   box.innerHTML = W.map(function (w, i) {
     var off = w.s === '휴방';
@@ -148,7 +149,9 @@ async function loadUpbo() {
     UCOUNTS = await fetchAll('upbo_counts') || [];
   } catch (e) { }
   var g = $('#vgrid'); if (!g) return;
-  if (!VIEWERS.length) { g.innerHTML = ''; $('#empty').style.display = 'block'; return; }
+  g.innerHTML = '';                                   /* 정적 테스트 카드 제거 */
+  if (!VIEWERS.length) { $('#empty').style.display = 'block'; return; }
+  $('#empty').style.display = 'none';
   g.innerHTML = VIEWERS.map(function (v) {
     var cs = UCOUNTS.filter(function (c) { return c.viewer_id === v.id && c.count > 0; });
     var total = cs.reduce(function (a, c) { return a + c.count; }, 0);
@@ -192,6 +195,8 @@ async function loadDress() {
   };
   var pg = $('#pgrid'), ag = $('#agrid');
   if (!pg) return;
+  pg.innerHTML = ''; if (ag) ag.innerHTML = '';       /* 정적 테스트 포스터 제거 */
+  if (!DRESS.length) { var e = $('#empty'); if (e) e.style.display = 'block'; return; }
   pg.innerHTML = DRESS.map(function (d) {
     return '<div class="poster" data-c="' + esc(d.category) + '" data-new="' + (isNew(d) ? 1 : 0) + '"' +
       ' data-src="' + esc(d.image_url) + '" data-name="' + esc(d.name) + '" data-desc="' + esc(d.description || '') + '">' +
@@ -235,6 +240,7 @@ async function loadAvatarInfo() {
       if (!g) { g = { label: c.group_label, parts: [] }; groups.push(g); }
       g.parts.push(c);
     });
+    box.innerHTML = '';
     box.innerHTML = groups.map(function (g) {
       return '<div class="row"><b>' + esc(g.label) + ' //</b><span>' +
         g.parts.map(function (c) { return '<span class="p">' + esc(c.role) + ' : ' + link(c) + '</span>'; }).join('') +
@@ -252,7 +258,7 @@ async function loadAvatarInfo() {
         return '<a class="it" href="' + esc(c.url || '#') + '" target="_blank" rel="noreferrer">' + esc(c.name) + '<i>↗</i></a>';
       }).join('') + '</div>';
     };
-    b.innerHTML = col(arr.slice(0, half)) + col(arr.slice(half));
+    b.innerHTML = arr.length ? (col(arr.slice(0, half)) + col(arr.slice(half))) : '';
     var cnt = $('[data-' + sec + '-cnt]'); if (cnt) cnt.textContent = arr.length;
   });
 
