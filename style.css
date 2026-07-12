@@ -3,13 +3,13 @@
    ============================================= */
 
 @font-face {
-  font-family: 'AndongKaturi';
+  font-family:'Malang',sans-serif;
   src: url('https://cdn.jsdelivr.net/gh/webdesignfarm/font/AndongKaturi.woff') format('woff');
   font-display: swap;
 }
 
 :root {
-  --katuri: 'Pretendard','Noto Sans KR',sans-serif;
+  --katuri: sans-serif;
   /* ⬇⬇ 새 사람 만들 때 이 5개 색만 바꾸면 서브페이지 전체 색이 바뀜 (메인 index.html의 :root도 같이 맞출 것) ⬇⬇ */
   --main:        #8a93a3;
   --main-dark:   #545d6b;
@@ -81,7 +81,7 @@ body.dark tr:hover td { background: #22262e; }
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family:'Malang',sans-serif;
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
@@ -112,7 +112,7 @@ body::before {
   gap: 2px;
 }
 a.nav-logo {
-  font-family: var(--katuri);
+  font-family:'Malang',sans-serif;
   font-size: 30px !important; color: var(--logo) !important;
   margin-right: auto;
   padding: 10px 12px;
@@ -246,7 +246,7 @@ tr:hover td { background: var(--main-light); }
   width: 100%; padding: 10px 14px;
   border-radius: var(--radius-sm);
   border: 1.5px solid var(--main-light);
-  font-size: 14px; font-family: inherit;
+  font-size: 14px; font-family:'Malang',sans-serif;
   outline: none; background: #fff;
   transition: border-color var(--transition);
 }
@@ -280,7 +280,7 @@ tr:hover td { background: var(--main-light); }
 
 /* ── 페이지 타이틀 ── */
 .page-title {
-  font-family: 'Pretendard','Noto Sans KR',sans-serif;
+  font-family:'Malang',sans-serif;
   font-size: 32px; color: var(--main-dark);
   text-align: center; margin-bottom: 4px;
 }

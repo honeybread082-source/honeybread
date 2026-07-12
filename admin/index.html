@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>꿀빵지 · 관리자</title>
   <link rel="icon" type="image/jpeg" href="https://profile.img.sooplive.co.kr/LOGO/20/2059865/2059865.jpg">
-  <link href="https://fonts.googleapis.com/css2?family=Jua&family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
 @font-face{font-family:'Malang';
  src:url('../GeekbleMalang2.woff2') format('woff2'),url('../GeekbleMalang2.woff') format('woff');
@@ -21,9 +20,9 @@
       --text:#F5E9DC;--text-soft:#C3A9A0;--line:#4E3D4A;--line-p:#5A3F52;
       --shadow:0 8px 24px rgba(0,0,0,.35);--shadow-hover:0 14px 32px rgba(0,0,0,.42)}
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Malang','Noto Sans KR',sans-serif;color:var(--text);background:var(--bg);line-height:1.75;padding:26px 16px}
-    h1,h2,h3,.page-title,.card-title,.btn,.tab-btn,.login-title{font-family:'Malang','Jua',sans-serif;font-weight:400}
-    input,textarea,select{font-family:inherit}
+    body{font-family:'Malang',sans-serif;color:var(--text);background:var(--bg);line-height:1.75;padding:26px 16px}
+    h1,h2,h3,.page-title,.card-title,.btn,.tab-btn,.login-title{font-family:'Malang',sans-serif;font-weight:400}
+    input,textarea,select{font-family:'Malang',sans-serif}
     .container{max-width:1080px;margin:0 auto;background:var(--page);border-radius:34px;padding:24px;
       box-shadow:0 24px 60px rgba(200,150,90,.16)}
     .page-title{font-size:30px;color:var(--gold)}
@@ -81,7 +80,7 @@
     /* 요일 */
     .week-edit{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
     .we{background:var(--card2);border:2px solid var(--line);border-radius:16px;padding:12px 6px;text-align:center}
-    .we b{display:block;font-family:'Malang','Jua';font-weight:400;font-size:17px;color:var(--gold);margin-bottom:6px}
+    .we b{display:block;font-family:'Malang',sans-serif;font-weight:400;font-size:17px;color:var(--gold);margin-bottom:6px}
     .we select,.we input{width:100%;border:2px solid var(--line);border-radius:10px;padding:6px 4px;font-size:12px;
       background:var(--card);color:var(--text);text-align:center;outline:none}
     .we select{margin-bottom:5px}
@@ -94,7 +93,10 @@
       border-radius:999px;padding:12px 28px;font-size:14px;font-weight:700;opacity:0;transition:.3s;z-index:1000;pointer-events:none}
     .toast.show{opacity:1}
     @media(max-width:760px){.form-grid,.form-grid3{grid-template-columns:1fr}.week-edit{grid-template-columns:repeat(4,1fr)}}
-  </style>
+  
+/* ── 전체 폰트 통일 ── */
+*,*::before,*::after{font-family:'Malang',sans-serif !important}
+</style>
 </head>
 <body>
 
