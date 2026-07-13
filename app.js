@@ -71,6 +71,17 @@ async function loadProfile() {
     }).join('');
   }
 
+  /* 해시태그 */
+  var tg = $('[data-tags]');
+  if (tg) {
+    var tags = [];
+    try { tags = JSON.parse(PROFILE['tags'] || '[]'); } catch (e) { }
+    if (!tags.length) tags = ['#개냥이', '#딸기', '#노래방송', '#왕밤'];
+    tg.innerHTML = tags.map(function (t) {
+      return '<span class="tag">' + esc(t) + '</span>';
+    }).join('');
+  }
+
   /* 규칙 */
   var rl = $('[data-rules]');
   if (rl) {
@@ -217,8 +228,6 @@ async function loadUpbo() {
 var DRESS = [];
 async function loadDress() {
   try { DRESS = await fetchAll('dress_items', { order: 'sort_order' }) || []; } catch (e) { DRESS = []; }
-  DRESS.sort(function (a, b) { return (b.created_at || '').localeCompare(a.created_at || ''); });
-  var LAB = { hair: '헤어', outfit: '의상', lens: '렌즈' };
   var isNew = function (d) {
     var b = d.badges || [];
     return b.some(function (x) { return (x.label || x) === 'NEW'; });
@@ -233,7 +242,7 @@ async function loadDress() {
       '<img class="avatar" src="' + esc(d.image_url) + '" referrerpolicy="no-referrer" alt="' + esc(d.name) + '">' +
       '<span class="frame"></span>' +
       '<div class="p-top"><span class="p-brand">HONEYBREAD</span>' + (isNew(d) ? '<span class="p-new">NEW</span>' : '') + '</div>' +
-      '<div class="p-bottom"><span class="p-cat">' + (LAB[d.category] || d.category) + '</span>' +
+      '<div class="p-bottom"><span class="p-cat">' + esc(d.category || '') + '</span>' +
       '<span class="p-line"></span><b class="p-name">' + esc(d.name) + '</b>' +
       '<div class="p-meta">' + (d.created_at || '').slice(0, 10) + '</div>' +
       '<p class="p-desc">' + esc(d.description || '') + '</p></div></div>';
