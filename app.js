@@ -71,6 +71,41 @@ async function loadProfile() {
     }).join('');
   }
 
+  /* 좋아하는 것 (아이콘 자동/수동) */
+  var LIKE_ICON = {
+    '딸기':'berry','스트로베리':'berry','베리':'berry',
+    '빵':'bread','식빵':'bread','토스트':'bread',
+    '크루아상':'crois','크로와상':'crois',
+    '단 것':'cake','단것':'cake','디저트':'cake','케이크':'cake','케잌':'cake',
+    '사탕':'candy','캔디':'candy','초콜릿':'candy','초코':'candy',
+    '얼죽아':'ice','아메리카노':'ice','커피':'ice','아아':'ice','음료':'ice',
+    '고양이':'cat','냥이':'cat','개냥이':'cat',
+    '잠':'catsleep','낮잠':'catsleep','수면':'catsleep',
+    '노래':'note','음악':'note','노래방':'mic','마이크':'mic',
+    '게임':'play','방송':'play',
+    '별':'star','반짝':'spark',
+    '리본':'ribbon','선물':'gift','왕관':'crown','발바닥':'paw'
+  };
+  function iconFor(txt) {
+    var t = (txt || '').trim();
+    if (LIKE_ICON[t]) return LIKE_ICON[t];
+    var hit = Object.keys(LIKE_ICON).find(function (k) { return t.indexOf(k) >= 0; });
+    return hit ? LIKE_ICON[hit] : 'heart';
+  }
+  var lb = $('[data-likes]');
+  if (lb) {
+    var out = '';
+    for (var i = 1; i <= 4; i++) {
+      var v = PROFILE['like' + i];
+      if (!v) continue;
+      var ic = iconFor(v);
+      out += '<div class="lk">' +
+             '<svg class="ic" width="42" height="42"><use href="#i-' + ic + '"/></svg>' +
+             '<b>' + esc(v) + '</b></div>';
+    }
+    lb.innerHTML = out;
+  }
+
   /* 해시태그 */
   var tg = $('[data-tags]');
   if (tg) {

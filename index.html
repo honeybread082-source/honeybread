@@ -107,8 +107,10 @@ body.dark .dk .knob{top:13px;background:var(--pink-d)}
 .card.likes{display:grid;grid-template-columns:1.35fr auto .95fr;gap:18px;align-items:center}
 .vdiv{border-left:2px dashed var(--line);height:80%}
 .lg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.lk{display:grid;place-items:center;padding:14px 6px;border-radius:16px;background:var(--card2);
- border:2px solid var(--line)}
+.lk{display:grid;place-items:center;gap:6px;padding:14px 6px;border-radius:16px;background:var(--card2);
+ border:2px solid var(--line);transition:.18s}
+.lk:hover{transform:translateY(-3px);border-color:var(--line-p);background:var(--pink-s)}
+.lk .ic{flex:none}
 .lk b{font-size:18px;color:var(--text);letter-spacing:-.2px}
 .dis li{display:flex;align-items:center;gap:9px;padding:8px 0;font-size:17px;font-weight:500}
 
@@ -277,7 +279,7 @@ b,strong,h1,h2,h3,h4,.rh{font-weight:400 !important}
         <div class="card likes">
           <div>
             <h3 class="ttl"><svg class="ic " width="15" height="15"><use href="#i-heart"/></svg> 좋아하는 것</h3>
-            <div class="lg"><div class="lk"><b><span class="dh" data-k="like1">딸기</span></b></div><div class="lk"><b><span class="dh" data-k="like2">빵</span></b></div><div class="lk"><b><span class="dh" data-k="like3">단 것</span></b></div><div class="lk"><b><span class="dh" data-k="like4">얼죽아</span></b></div></div>
+            <div class="lg" data-likes></div>
           </div>
           <div class="vdiv"></div>
           <div>
