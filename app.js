@@ -114,11 +114,36 @@ function renderWeek() {
 }
 
 /* ── 일정 달력 ── */
-var CAL_Y, CAL_M, SCHEDULE = [];
+var CAL_Y, CAL_M, SCHEDULE = [], CATS = [];
+var DEFAULT_CATS = [
+  { key: 'song',  name: '노래',   bg: '#FFE3F0', fg: '#D96AA0' },
+  { key: 'game',  name: '게임',   bg: '#E4F0FF', fg: '#5C90CC' },
+  { key: 'talk',  name: '저챗',   bg: '#FFF0CE', fg: '#C9922E' },
+  { key: 'asmr',  name: 'ASMR',  bg: '#E8F5E4', fg: '#6FA25C' },
+  { key: 'event', name: '이벤트', bg: '#F0E6FF', fg: '#8B6FC4' },
+  { key: 'bday',  name: '생일',   bg: '#FFD9E8', fg: '#D0578F' }
+];
+function loadCats() {
+  try {
+    var c = JSON.parse(PROFILE['cal-cats'] || '[]');
+    CATS = (c && c.length) ? c : DEFAULT_CATS;
+  } catch (e) { CATS = DEFAULT_CATS; }
+}
+function catOf(key) {
+  return CATS.find(function (c) { return c.key === key; }) ||
+         { key: key, name: key, bg: '#FFF0F6', fg: '#F08BB0' };
+}
 async function loadSchedule() {
+  loadCats();
   try { SCHEDULE = await fetchAll('schedule', { order: 'date' }) || []; } catch (e) { SCHEDULE = []; }
   var t = new Date(); CAL_Y = t.getFullYear(); CAL_M = t.getMonth();
-  renderWeek(); renderCal();
+  renderWeek(); renderCal(); renderLegend();
+}
+function renderLegend() {
+  var b = $('[data-legend]'); if (!b) return;
+  b.innerHTML = CATS.map(function (c) {
+    return '<span class="lg" style="background:' + c.bg + ';color:' + c.fg + '">' + esc(c.name) + '</span>';
+  }).join('');
 }
 function calMove(d) { CAL_M += d; if (CAL_M < 0) { CAL_M = 11; CAL_Y--; } if (CAL_M > 11) { CAL_M = 0; CAL_Y++; } renderCal(); }
 function renderCal() {
@@ -136,7 +161,9 @@ function renderCal() {
     var evs = SCHEDULE.filter(function (s) { return (s.date || '').slice(0, 10) === ds; });
     var wd = (new Date(CAL_Y, CAL_M, d).getDay() + 6) % 7;
     var tags = evs.map(function (e) {
-      return '<span class="ev ' + (e.color || 'song') + '">' + esc(e.title) + (e.time ? ' ' + esc(e.time) : '') + '</span>';
+      var c = catOf(e.color || 'song');
+      return '<span class="ev" style="background:' + c.bg + ';color:' + c.fg + '">' +
+             esc(e.title) + (e.time ? ' ' + esc(e.time) : '') + '</span>';
     }).join('');
     cells += '<div class="cell' + (wd === 6 ? ' sun' : '') + (evs.length ? ' has' : '') + '"><em>' + d + '</em>' + tags + '</div>';
   }
