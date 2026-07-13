@@ -627,6 +627,8 @@ async function addSched(){
 async function loadUpbo(){
   VIEWERS = await fetchAll('viewers', {order:'sort_order', asc:true}) || [];
   TYPES   = await fetchAll('upbo_types', {order:'sort_order', asc:true}) || [];
+  await normalize('viewers', VIEWERS);
+  await normalize('upbo_types', TYPES);
   COUNTS  = await fetchAll('upbo_counts') || [];
 
   document.getElementById('typeList').innerHTML = TYPES.map((t,i)=>
@@ -678,6 +680,7 @@ async function setCount(){
 /* ── 옷장 ── */
 async function loadDress(){
   DRESS = await fetchAll('dress_items', {order:'sort_order', asc:true}) || [];
+  await normalize('dress_items', DRESS);
   const L={hair:'헤어',outfit:'의상',lens:'렌즈'};
   document.getElementById('dressList').innerHTML = DRESS.map((d,i)=>{
     const isNew = (d.badges||[]).some(b=>(b.label||b)==='NEW');
@@ -713,6 +716,7 @@ function secChange(){
 }
 async function loadCredits(){
   CREDITS = await fetchAll('avatar_credits', {order:'sort_order', asc:true}) || [];
+  await normalize('avatar_credits', CREDITS);
   const S={avatar:'아바타',cloth:'의상',hair:'헤어'};
   document.getElementById('creditList').innerHTML = CREDITS.map((c,i)=>
     `<div class="li"><span class="m">${S[c.section]}</span>
@@ -748,6 +752,22 @@ async function loadAsk(){
   ).join('') || '<div class="empty-note">받은 문의가 없어요</div>';
 }
 
+/* ── 순서 정규화: sort_order 가 0..N-1 로 유일하지 않으면 DB에 다시 매김 ── */
+async function normalize(table, arr){
+  let need = false;
+  for (let k = 0; k < arr.length; k++) {
+    if (arr[k].sort_order !== k) { need = true; break; }
+  }
+  if (!need) return arr;
+  for (let k = 0; k < arr.length; k++) {
+    if (arr[k].sort_order !== k) {
+      await updateRow(table, arr[k].id, { sort_order: k });
+      arr[k].sort_order = k;
+    }
+  }
+  return arr;
+}
+
 /* ── 삭제 / 순서 ── */
 async function del(table, id, cb){
   if(!confirm('삭제할까요?')) return;
@@ -759,16 +779,14 @@ async function moveRow(table, id, dir, arr, cb){
   if (i < 0 || j < 0 || j >= arr.length) return;
 
   const a = arr.slice();
-  const t = a[i]; a[i] = a[j]; a[j] = t;          // 위치 교환
+  const t = a[i]; a[i] = a[j]; a[j] = t;
 
-  /* 전체 sort_order 를 0..N 으로 다시 매김 (기존 값이 뒤죽박죽이어도 안전) */
+  /* 전체를 0..N-1 로 무조건 다시 매김 (중복/누락 방지) */
   for (let k = 0; k < a.length; k++) {
-    if (a[k].sort_order !== k) {
-      await updateRow(table, a[k].id, { sort_order: k });
-    }
+    await updateRow(table, a[k].id, { sort_order: k });
   }
   toast('순서 변경됨');
-  cb();
+  await cb();
 }
 
 async function boot(){
