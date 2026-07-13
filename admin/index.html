@@ -605,7 +605,7 @@ function delRule(i){ if(!confirm('이 규칙 그룹을 삭제할까요?')) retur
 
 /* ── 일정 ── */
 async function loadSched(){
-  const rows = await fetchAll('schedule', {order:'date'}) || [];
+  const rows = await fetchAll('schedule', {order:'date', asc:true}) || [];
   const C={song:'🎵',game:'🎮',talk:'💬',asmr:'🌙',event:'✨',bday:'🎂'};
   document.getElementById('schedList').innerHTML = rows.map(r=>
     `<div class="li">${C[r.color]||'🎵'} <b>${esc(r.date)}</b>
@@ -625,8 +625,8 @@ async function addSched(){
 
 /* ── 업보 ── */
 async function loadUpbo(){
-  VIEWERS = await fetchAll('viewers', {order:'sort_order'}) || [];
-  TYPES   = await fetchAll('upbo_types', {order:'sort_order'}) || [];
+  VIEWERS = await fetchAll('viewers', {order:'sort_order', asc:true}) || [];
+  TYPES   = await fetchAll('upbo_types', {order:'sort_order', asc:true}) || [];
   COUNTS  = await fetchAll('upbo_counts') || [];
 
   document.getElementById('typeList').innerHTML = TYPES.map((t,i)=>
@@ -677,7 +677,7 @@ async function setCount(){
 
 /* ── 옷장 ── */
 async function loadDress(){
-  DRESS = await fetchAll('dress_items', {order:'sort_order'}) || [];
+  DRESS = await fetchAll('dress_items', {order:'sort_order', asc:true}) || [];
   const L={hair:'헤어',outfit:'의상',lens:'렌즈'};
   document.getElementById('dressList').innerHTML = DRESS.map((d,i)=>{
     const isNew = (d.badges||[]).some(b=>(b.label||b)==='NEW');
@@ -712,7 +712,7 @@ function secChange(){
   document.getElementById('a-rl').style.display = av ? 'block' : 'none';
 }
 async function loadCredits(){
-  CREDITS = await fetchAll('avatar_credits', {order:'sort_order'}) || [];
+  CREDITS = await fetchAll('avatar_credits', {order:'sort_order', asc:true}) || [];
   const S={avatar:'아바타',cloth:'의상',hair:'헤어'};
   document.getElementById('creditList').innerHTML = CREDITS.map((c,i)=>
     `<div class="li"><span class="m">${S[c.section]}</span>

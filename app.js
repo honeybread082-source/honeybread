@@ -146,7 +146,7 @@ function catOf(key) {
 }
 async function loadSchedule() {
   loadCats();
-  try { SCHEDULE = await fetchAll('schedule', { order: 'date' }) || []; } catch (e) { SCHEDULE = []; }
+  try { SCHEDULE = await fetchAll('schedule', { order: 'date', asc: true }) || []; } catch (e) { SCHEDULE = []; }
   var t = new Date(); CAL_Y = t.getFullYear(); CAL_M = t.getMonth();
   renderWeek(); renderCal(); renderLegend();
 }
@@ -185,8 +185,8 @@ function renderCal() {
 var VIEWERS = [], UTYPES = [], UCOUNTS = [];
 async function loadUpbo() {
   try {
-    VIEWERS = await fetchAll('viewers', { order: 'sort_order' }) || [];
-    UTYPES = await fetchAll('upbo_types', { order: 'sort_order' }) || [];
+    VIEWERS = await fetchAll('viewers', { order: 'sort_order', asc: true }) || [];
+    UTYPES = await fetchAll('upbo_types', { order: 'sort_order', asc: true }) || [];
     UCOUNTS = await fetchAll('upbo_counts') || [];
   } catch (e) { }
   var g = $('#vgrid'); if (!g) return;
@@ -227,7 +227,7 @@ async function loadUpbo() {
 /* ── 옷장 ── */
 var DRESS = [];
 async function loadDress() {
-  try { DRESS = await fetchAll('dress_items', { order: 'sort_order' }) || []; } catch (e) { DRESS = []; }
+  try { DRESS = await fetchAll('dress_items', { order: 'sort_order', asc: true }) || []; } catch (e) { DRESS = []; }
   var isNew = function (d) {
     var b = d.badges || [];
     return b.some(function (x) { return (x.label || x) === 'NEW'; });
@@ -262,7 +262,7 @@ async function loadDress() {
 /* ── 아바타 정보 ── */
 async function loadAvatarInfo() {
   var CR = [];
-  try { CR = await fetchAll('avatar_credits', { order: 'sort_order' }) || []; } catch (e) { }
+  try { CR = await fetchAll('avatar_credits', { order: 'sort_order', asc: true }) || []; } catch (e) { }
   var link = function (c) {
     return c.url
       ? '<a class="cl" href="' + esc(c.url) + '" target="_blank" rel="noreferrer">' + esc(c.name) + '</a>'
