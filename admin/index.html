@@ -601,6 +601,8 @@ function moveCat(i,d){ const j=i+d; if(j<0||j>=CATS.length) return;
 /* ── 일정 ── */
 async function loadSched(){
   const rows = await fetchAll('schedule',{order:'date', asc:true})||[];
+  /* 최신 날짜가 맨 위 (같은 날 안에서는 1부→2부 순서 유지) */
+  rows.sort((a,b)=> String(b.date||'').localeCompare(String(a.date||'')) || ((a.id||0)-(b.id||0)));
   document.getElementById('schedList').innerHTML = rows.map(r=>{
     const c = CATS.find(x=>x.key===r.color) || {name:r.color||'-',bg:'#eee',fg:'#888'};
     return `<div class="li">

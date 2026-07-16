@@ -182,6 +182,10 @@ function catOf(key) {
 async function loadSchedule() {
   loadCats();
   try { SCHEDULE = await fetchAll('schedule', { order: 'date', asc: true }) || []; } catch (e) { SCHEDULE = []; }
+  /* 같은 날짜 이벤트(1부·2부)가 새로고침마다 순서 바뀌는 것 방지 → id 기준 고정 정렬 */
+  SCHEDULE.sort(function (a, b) {
+    return String(a.date || '').localeCompare(String(b.date || '')) || ((a.id || 0) - (b.id || 0));
+  });
   var t = new Date(); CAL_Y = t.getFullYear(); CAL_M = t.getMonth();
   renderWeek(); renderCal(); renderLegend();
 }
@@ -211,10 +215,36 @@ function renderCal() {
       return '<span class="ev" style="background:' + c.bg + ';color:' + c.fg + '">' +
              esc(e.title) + (e.time ? ' ' + esc(e.time) : '') + '</span>';
     }).join('');
-    cells += '<div class="cell' + (wd === 6 ? ' sun' : '') + (evs.length ? ' has' : '') + '"><em>' + d + '</em>' + tags + '</div>';
+    cells += '<div class="cell' + (wd === 6 ? ' sun' : '') + (evs.length ? ' has clickable' : '') +
+             '" data-day="' + (evs.length ? ds : '') + '"><em>' + d + '</em>' + tags + '</div>';
   }
   box.innerHTML = head + cells;
+  box.onclick = function (e) {
+    var cell = e.target.closest('.cell.clickable'); if (!cell) return;
+    openSchDay(cell.getAttribute('data-day'));
+  };
 }
+
+/* ── 일정 상세 모달 ── */
+function openSchDay(ds) {
+  var modal = document.getElementById('schModal'); if (!modal || !ds) return;
+  var evs = SCHEDULE.filter(function (s) { return (s.date || '').slice(0, 10) === ds; });
+  var p = ds.split('-');
+  var wdName = ['일', '월', '화', '수', '목', '금', '토'][new Date(+p[0], +p[1] - 1, +p[2]).getDay()];
+  var head = document.getElementById('schModalDate');
+  if (head) head.textContent = +p[1] + '월 ' + +p[2] + '일 (' + wdName + ')';
+  var body = document.getElementById('schModalBody');
+  if (body) body.innerHTML = evs.map(function (e) {
+    var c = catOf(e.color || 'song');
+    var parts = '';
+    if (e.time || e.title) parts += '<div class="sm-part"><span class="sm-t">' + esc(e.time || '') + '</span><b>' + esc(e.title || '') + '</b></div>';
+    if (e.title2 || e.time2) parts += '<div class="sm-part"><span class="sm-t">' + esc(e.time2 || '') + '</span><b>' + esc(e.title2 || '') + '</b></div>';
+    var note = (e.description || e.note) ? '<p class="sm-note">' + esc(e.description || e.note) + '</p>' : '';
+    return '<div class="sm-ev"><span class="sm-chip" style="background:' + c.bg + ';color:' + c.fg + '">' + esc(c.name) + '</span>' + parts + note + '</div>';
+  }).join('');
+  modal.classList.add('on');
+}
+function closeSchDay() { var m = document.getElementById('schModal'); if (m) m.classList.remove('on'); }
 
 /* ── 업보 ── */
 var VIEWERS = [], UTYPES = [], UCOUNTS = [];
