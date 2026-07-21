@@ -13,7 +13,11 @@ function esc(t) { return String(t == null ? '' : t).replace(/[<>&]/g, function (
 function ready() { document.body.classList.add('ready'); }
 
 /* ── SOOP 프사 ── */
+function cleanId(id) {
+  return String(id || '').trim().replace(/^@+/, '').trim();
+}
 function soopAvatar(id) {
+  id = cleanId(id);
   if (!id) return '';
   return 'https://profile.img.sooplive.co.kr/LOGO/' + id.slice(0, 2) + '/' + id + '/' + id + '.jpg';
 }
@@ -261,10 +265,17 @@ async function loadUpbo() {
   g.innerHTML = VIEWERS.map(function (v) {
     var cs = UCOUNTS.filter(function (c) { return c.viewer_id === v.id && c.count > 0; });
     var total = cs.reduce(function (a, c) { return a + c.count; }, 0);
-    return '<div class="vc" data-nick="' + esc(v.nickname) + '" data-id="' + esc(v.soop_id || '') + '" data-vid="' + v.id + '">' +
-      '<div class="vfb">' + esc((v.nickname || '?')[0]) + '</div>' +
+    var sid = cleanId(v.soop_id);
+    var ini = esc((v.nickname || '?')[0]);
+    /* 프사: SOOP 아이디 있으면 이미지, 실패하면 글자 폴백으로 교체 */
+    var av = sid
+      ? '<img class="vav" src="' + soopAvatar(sid) + '" alt="' + esc(v.nickname) + '" referrerpolicy="no-referrer" loading="lazy"' +
+        ' onerror="this.outerHTML=\'<div class=&quot;vfb&quot;>' + ini + '</div>\'">'
+      : '<div class="vfb">' + ini + '</div>';
+    return '<div class="vc" data-nick="' + esc(v.nickname) + '" data-id="' + esc(sid) + '" data-vid="' + v.id + '">' +
+      av +
       '<b class="vn">' + esc(v.nickname) + '</b>' +
-      '<em class="vi">@' + esc(v.soop_id || '-') + '</em>' +
+      '<em class="vi">@' + (sid || '-') + '</em>' +
       '<span class="vt">' + total + '개</span></div>';
   }).join('');
   $$('.vc').forEach(function (c) {
@@ -273,14 +284,33 @@ async function loadUpbo() {
       var cs = UCOUNTS.filter(function (x) { return x.viewer_id === vid && x.count > 0; });
       var rows = cs.map(function (x) {
         var t = UTYPES.find(function (y) { return y.id === x.type_id; }) || {};
+        var cat = (t.category || '').trim();
         return '<div class="urow"><span class="nm">' + esc(t.name || '-') + '</span>' +
-          (t.category === '이벤트' ? '<span class="ev">이벤트</span>' : '') +
+          (cat ? '<span class="ev' + (cat === '이벤트' ? ' evt' : '') + '">' + esc(cat) + '</span>' : '') +
           '<span class="ct">' + x.count + '</span></div>';
       }).join('');
       var tot = cs.reduce(function (a, x) { return a + x.count; }, 0);
-      $('#mAv').textContent = (c.dataset.nick || '?')[0];
+      var mid = cleanId(c.dataset.id);
+      var mAv = $('#mAv');
+      if (mAv) {
+        var ini = (c.dataset.nick || '?')[0];
+        mAv.innerHTML = '';
+        mAv.textContent = ini;
+        mAv.style.backgroundImage = '';
+        if (mid) {
+          var probe = new Image();
+          probe.referrerPolicy = 'no-referrer';
+          probe.onload = function () {
+            mAv.textContent = '';
+            mAv.style.backgroundImage = 'url("' + soopAvatar(mid) + '")';
+            mAv.style.backgroundSize = 'cover';
+            mAv.style.backgroundPosition = 'center';
+          };
+          probe.src = soopAvatar(mid);
+        }
+      }
       $('#mNick').textContent = c.dataset.nick;
-      $('#mId').textContent = '@' + (c.dataset.id || '-');
+      $('#mId').textContent = '@' + (mid || '-');
       $('#mTot').textContent = '총 ' + tot + '개';
       $('#mBody').innerHTML = rows || '<p class="empty" style="display:block">업보가 없어요!</p>';
       $('#ov').classList.add('on');
